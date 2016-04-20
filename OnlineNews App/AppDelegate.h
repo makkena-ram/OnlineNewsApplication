@@ -7,9 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NewsPapers.h"
+#import "Constants.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
+//Declaring Required Properties
+@property NewsPapers *newsPapers;
+@property NSURL * newsVideosURL;
 @end

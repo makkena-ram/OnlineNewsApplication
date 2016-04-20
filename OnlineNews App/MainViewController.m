@@ -6,17 +6,20 @@
 //  Copyright (c) 2014 Student. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "MainViewController.h"
+#import "NewsPapersTableViewController.h"
+#import "NewsVideosTableViewController.h"
 
-@interface ViewController ()
+@interface MainViewController ()
 
 @end
 
-@implementation ViewController
+@implementation MainViewController
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"worldmap.jpg"]]];
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -26,4 +29,10 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)getNewsPapers:(id)sender {
+
+}
+
+- (IBAction)getNewsVideos:(id)sender {
+}
 @end

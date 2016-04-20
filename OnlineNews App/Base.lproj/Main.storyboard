@@ -1,21 +1,421 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4451" systemVersion="13A461" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A388b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="il8-ja-zsa">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3676"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <scenes>
-        <!--class Prefix:identifier View Controller-->
+        <!--Main View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="MainViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Z8W-Pa-9Gw"/>
+                        <viewControllerLayoutGuide type="bottom" id="d8S-MC-Vs6"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NTk-iu-R3f">
+                                <rect key="frame" x="32" y="193" width="256" height="54"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <state key="normal" title="Newspapers">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="getNewsPapers:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="cZR-tA-kX4"/>
+                                    <segue destination="Uby-1l-A6P" kind="push" id="LEA-Et-9lx"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qv4-y9-qXo">
+                                <rect key="frame" x="58" y="326" width="204" height="54"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <state key="normal" title="Newsvideos">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="getNewsVideos:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="OK0-FV-Fj1"/>
+                                    <segue destination="37A-Df-XD6" kind="push" id="zQf-bi-IPH"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="yW2-sk-YD8"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-40" y="-1562"/>
+        </scene>
+        <!--Latestnews Articles-->
+        <scene sceneID="Iqx-Po-F4Z">
+            <objects>
+                <viewController storyboardIdentifier="newsPapersTVC" id="1uO-Gb-WWt" customClass="NewsPapersTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="5bg-yu-jxY">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" id="1eU-Ei-rGV">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1eU-Ei-rGV" id="jKL-vA-dBM">
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="VrC-8b-nTl" kind="push" identifier="newsDetailView" id="noV-mo-3nT"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="1uO-Gb-WWt" id="uW8-mq-htQ"/>
+                            <outlet property="delegate" destination="1uO-Gb-WWt" id="yIZ-he-wO0"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Latestnews Articles" id="bMD-c8-7J8">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="bhy-QZ-BhT"/>
+                        <barButtonItem key="rightBarButtonItem" title="Categories" id="yQy-3P-DnZ">
+                            <connections>
+                                <segue destination="OjM-z9-RFB" kind="modal" identifier="" id="fob-jo-Ecb"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="5bg-yu-jxY" id="Hzc-Qb-JcB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eqZ-zh-bqL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1012" y="-1977"/>
+        </scene>
+        <!--Category Table View Controller-->
+        <scene sceneID="PI0-hx-4hv">
+            <objects>
+                <tableViewController storyboardIdentifier="Category" id="OjM-z9-RFB" customClass="CategoryTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="XtY-u4-91d">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="5og-75-PrD">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <items>
+                                <navigationItem title="Categories" id="LEt-2c-qE1"/>
+                            </items>
+                        </navigationBar>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="5Nv-aR-gAj">
+                                <rect key="frame" x="0.0" y="66" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5Nv-aR-gAj" id="6en-kd-hrn">
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="OjM-z9-RFB" id="Lgd-P2-4Iy"/>
+                            <outlet property="delegate" destination="OjM-z9-RFB" id="zWV-ni-jnr"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="AA2-w5-6ZS"/>
+                    <connections>
+                        <outlet property="navigationBar" destination="5og-75-PrD" id="uzQ-yg-cCh"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UlN-ek-bDn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1867" y="-1657"/>
+        </scene>
+        <!--Newspapers-->
+        <scene sceneID="I8l-Jf-jaf">
+            <objects>
+                <tableViewController id="Uby-1l-A6P" customClass="NewsPapersListTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="n3V-nO-GuQ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" text="" placeholder="Search News Papres...." id="Hva-fV-O4J">
+                            <rect key="frame" x="0.0" y="64" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="Uby-1l-A6P" id="M5g-kS-w8o"/>
+                            </connections>
+                        </searchBar>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="rGx-kZ-Bf3">
+                                <rect key="frame" x="0.0" y="130" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rGx-kZ-Bf3" id="oQn-mY-WYC">
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="1uO-Gb-WWt" kind="push" identifier="newsPapersTableVC" id="O4d-32-B0P"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Uby-1l-A6P" id="wJO-aT-dWI"/>
+                            <outlet property="delegate" destination="Uby-1l-A6P" id="mLA-3a-6LF"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Newspapers" id="S5s-ii-F74">
+                        <barButtonItem key="leftBarButtonItem" title="Home" id="3Ln-32-6fH">
+                            <connections>
+                                <action selector="home:" destination="Uby-1l-A6P" id="a1u-X8-lc1"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="+" id="QsT-7d-5iT">
+                            <connections>
+                                <segue destination="r1F-aP-pLT" kind="modal" id="Cku-OZ-leA"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="searchBar" destination="Hva-fV-O4J" id="xKG-l2-efZ"/>
+                        <outlet property="searchDisplayController" destination="DG6-kW-zeS" id="3FG-OZ-daJ"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fVW-Z4-Pv3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="fVx-st-u0C">
+                    <connections>
+                        <outlet property="delegate" destination="Uby-1l-A6P" id="SMv-LO-urH"/>
+                        <outlet property="searchContentsController" destination="Uby-1l-A6P" id="flF-Tn-QLS"/>
+                        <outlet property="searchResultsDataSource" destination="Uby-1l-A6P" id="XAT-WM-Qyt"/>
+                        <outlet property="searchResultsDelegate" destination="Uby-1l-A6P" id="Ebg-Gs-j9l"/>
+                    </connections>
+                </searchDisplayController>
+                <searchDisplayController id="DG6-kW-zeS">
+                    <connections>
+                        <outlet property="delegate" destination="Uby-1l-A6P" id="6hW-Gv-7RM"/>
+                        <outlet property="searchContentsController" destination="Uby-1l-A6P" id="ONS-VL-6eZ"/>
+                        <outlet property="searchResultsDataSource" destination="Uby-1l-A6P" id="Udt-nC-zfM"/>
+                        <outlet property="searchResultsDelegate" destination="Uby-1l-A6P" id="yDf-ff-bNL"/>
+                    </connections>
+                </searchDisplayController>
+            </objects>
+            <point key="canvasLocation" x="486" y="-1925"/>
+        </scene>
+        <!--Add News Paper View Controller-->
+        <scene sceneID="kSR-cY-pN7">
+            <objects>
+                <viewController id="r1F-aP-pLT" customClass="AddNewsPaperViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zYa-GJ-Bx3"/>
+                        <viewControllerLayoutGuide type="bottom" id="HYl-4q-dx6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="JmO-tD-oS2">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title Of the News Paper:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Alb-CS-W65">
+                                <rect key="frame" x="7" y="101" width="187" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Categories Names:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rsa-Ys-K29">
+                                <rect key="frame" x="7" y="130" width="147" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Give the Details Of New News Paper" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7mg-iq-Dm6">
+                                <rect key="frame" x="24" y="44" width="281" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.40000000596046448" green="0.80000001192092896" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EqS-pc-2gQ">
+                                <rect key="frame" x="7" y="167" width="294" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="r1F-aP-pLT" id="74n-yw-jsa"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Iom-bA-jBn">
+                                <rect key="frame" x="7" y="253" width="299" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="r1F-aP-pLT" id="cna-Od-zVQ"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="RSS Feeds for Categories:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ysC-Vf-AJ5">
+                                <rect key="frame" x="7" y="216" width="204" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="el2-y7-HC3">
+                                <rect key="frame" x="202" y="97" width="104" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="r1F-aP-pLT" id="58C-4x-dvQ"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PR4-dh-yZp">
+                                <rect key="frame" x="31" y="320" width="48" height="30"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancel:" destination="r1F-aP-pLT" eventType="touchUpInside" id="1rJ-ku-adC"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fPu-8A-tvg">
+                                <rect key="frame" x="213" y="320" width="30" height="30"/>
+                                <state key="normal" title="Add">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addNewsPaper:" destination="r1F-aP-pLT" eventType="touchUpInside" id="wh9-w9-S5Q"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="categoryNamesTF" destination="EqS-pc-2gQ" id="Hzd-s1-Ega"/>
+                        <outlet property="rssFeedsTF" destination="Iom-bA-jBn" id="uP5-5a-fC7"/>
+                        <outlet property="titleTF" destination="el2-y7-HC3" id="NsB-IC-MqT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zWn-qa-fI5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1003" y="-2652"/>
+        </scene>
+        <!--Article in Detail-->
+        <scene sceneID="V9S-zN-DZu">
+            <objects>
+                <viewController id="VrC-8b-nTl" customClass="NewsPaperDetailViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Tt9-0F-bCl"/>
+                        <viewControllerLayoutGuide type="bottom" id="jHN-mr-ZGd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hFz-CO-GHZ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U1H-b2-4Js">
+                                <rect key="frame" x="248" y="524" width="320" height="44"/>
+                                <items/>
+                            </toolbar>
+                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FB2-4o-NKK">
+                                <rect key="frame" x="0.0" y="64" width="320" height="656"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="VrC-8b-nTl" id="6g4-CO-WfH"/>
+                                </connections>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Article in Detail" id="30o-kF-uDt">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="WCb-Qa-6Ch">
+                            <connections>
+                                <action selector="showPopOver:" destination="VrC-8b-nTl" id="mFY-ie-GIT"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="webView" destination="FB2-4o-NKK" id="EZN-kg-fHX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xek-mc-hOA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1840" y="-2376"/>
+        </scene>
+        <!--Newsvideos-->
+        <scene sceneID="Ykv-p0-2JA">
+            <objects>
+                <tableViewController id="37A-Df-XD6" customClass="NewsVideosTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="mhY-0p-b2c">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="XQs-PA-lsP">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XQs-PA-lsP" id="SC2-UN-DNi">
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="iqO-2u-Nmh" kind="push" id="oRG-Iy-B2H"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="37A-Df-XD6" id="v89-Yb-UgX"/>
+                            <outlet property="delegate" destination="37A-Df-XD6" id="VAj-C3-JMp"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Newsvideos" id="vz1-bo-VKc">
+                        <barButtonItem key="leftBarButtonItem" title="Home" id="KUO-lZ-efa">
+                            <connections>
+                                <action selector="home:" destination="37A-Df-XD6" id="nS6-rr-HdQ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Pr-re-R8o" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="486" y="-1059"/>
+        </scene>
+        <!--News Videos Detail View Controller-->
+        <scene sceneID="q3k-1e-URq">
+            <objects>
+                <viewController id="iqO-2u-Nmh" customClass="NewsVideosDetailViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1D5-nI-rA5"/>
+                        <viewControllerLayoutGuide type="bottom" id="DxG-vc-xB5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Hls-Ii-LcJ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="INB-Kv-8P2">
+                                <rect key="frame" x="0.0" y="20" width="320" height="543"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="rxw-ga-RXm"/>
+                    <connections>
+                        <outlet property="webView" destination="INB-Kv-8P2" id="Lyo-yu-OQ1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9Dx-EI-f5H" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1209" y="-1010"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="R5s-ct-ZFh">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="il8-ja-zsa" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="sLA-tb-a58">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="iLC-7E-WHa"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0rb-1U-oSB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-570" y="-1443"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
